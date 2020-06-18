@@ -1,6 +1,6 @@
 package leetcode.easy
 
-import leetcode.difficult.TreeNodeKotlin
+import leetcode.TreeNode
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -10,9 +10,9 @@ import kotlin.collections.ArrayList
  * @author littlecorgi
  * @date 2020-04-03 23:41
  */
-fun preorderTraversal(root: TreeNodeKotlin?): List<Int> {
+fun preorderTraversal(root: TreeNode?): List<Int> {
     val output = ArrayList<Int>()
-    val stack = Stack<TreeNodeKotlin>()
+    val stack = Stack<TreeNode>()
     var temp = root
     while (temp != null) {
         output.add(temp.`val`)

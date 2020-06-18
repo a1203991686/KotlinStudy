@@ -1,5 +1,6 @@
 package leetcode.difficult
 
+import leetcode.TreeNode
 import java.lang.StringBuilder
 import java.util.*
 
@@ -18,19 +19,13 @@ import java.util.*
  *     var right: TreeNode? = null
  * }
  */
-
-class TreeNodeKotlin(var `val`: Int) {
-    var left: TreeNodeKotlin? = null
-    var right: TreeNodeKotlin? = null
-}
-
 class Codec() {
     // Encodes a URL to a shortened URL.
-    fun serialize(root: TreeNodeKotlin?): String {
+    fun serialize(root: TreeNode?): String {
         return rSerialize(root, "")
     }
 
-    private fun rSerialize(root: TreeNodeKotlin?, str: String): String {
+    private fun rSerialize(root: TreeNode?, str: String): String {
         var sb = StringBuilder(str)
         if (root == null) {
             sb.append("None,")
@@ -43,18 +38,18 @@ class Codec() {
     }
 
     // Decodes your encoded data to tree.
-    fun deserialize(data: String): TreeNodeKotlin? {
+    fun deserialize(data: String): TreeNode? {
         val dataArray = data.split(",")
         val dataList = LinkedList<String>(dataArray.toList())
         return rDeserialize(dataList)
     }
 
-    private fun rDeserialize(l: List<String>): TreeNodeKotlin? {
+    private fun rDeserialize(l: List<String>): TreeNode? {
         var m = l.toMutableList()
         if (l[0] == "None") {
             return null
         }
-        val root = TreeNodeKotlin(l[0].toInt())
+        val root = TreeNode(l[0].toInt())
         m.removeAt(0)
         root.left = rDeserialize(m)
         root.right = rDeserialize(m)

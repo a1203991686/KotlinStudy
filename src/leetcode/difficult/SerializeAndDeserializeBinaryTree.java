@@ -1,5 +1,7 @@
 package leetcode.difficult;
 
+import leetcode.CommonJava.*;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,18 +14,8 @@ import java.util.List;
  * @date 2020-04-03 23:41
  */
 
-class TreeNodeJava {
-    int val;
-    TreeNodeJava left;
-    TreeNodeJava right;
-
-    TreeNodeJava(int x) {
-        val = x;
-    }
-}
-
 class CodecJava {
-    public String rserialize(TreeNodeJava root, String str) {
+    public String rserialize(TreeNode root, String str) {
         if (root == null) {
             str += "None,";
         } else {
@@ -34,17 +26,17 @@ class CodecJava {
         return str;
     }
 
-    public String serialize(TreeNodeJava root) {
+    public String serialize(TreeNode root) {
         return rserialize(root, "");
     }
 
-    public TreeNodeJava rdeserialize(List<String> l) {
+    public TreeNode rdeserialize(List<String> l) {
         if (l.get(0).equals("None")) {
             l.remove(0);
             return null;
         }
 
-        TreeNodeJava root = new TreeNodeJava(Integer.parseInt(l.get(0)));
+        TreeNode root = new TreeNode(Integer.parseInt(l.get(0)));
         l.remove(0);
         root.left = rdeserialize(l);
         root.right = rdeserialize(l);
@@ -52,7 +44,7 @@ class CodecJava {
         return root;
     }
 
-    public TreeNodeJava deserialize(String data) {
+    public TreeNode deserialize(String data) {
         String[] data_array = data.split(",");
         List<String> data_list = new LinkedList<>(Arrays.asList(data_array));
         return rdeserialize(data_list);

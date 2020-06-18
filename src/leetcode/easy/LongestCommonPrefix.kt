@@ -1,10 +1,8 @@
 package leetcode.easy
 
-import java.lang.Exception
-import java.lang.StringBuilder
-
 /**
- *
+ * 14. 最长公共前缀
+ * https://leetcode-cn.com/problems/longest-common-prefix/
  * @author littlecorgi
  * @date 2020-04-03 23:41
  */
@@ -52,8 +50,4 @@ fun longestCommonPrefix1(strs: Array<String>): String {
         }
     }
     return strs[0].substring(0, right)
-}
-
-fun main() {
-    println(longestCommonPrefix1(arrayOf("flower", "flow", "flight")))
 }
