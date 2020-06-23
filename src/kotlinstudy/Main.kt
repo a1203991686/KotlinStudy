@@ -1,34 +1,12 @@
 package kotlinstudy
 
+class Person {
+    private var age: Int = 0
+    private var name: Name = Name("William", "Shakespeare")
 
-interface Expr
-
-class Num(val value: Int) : Expr
-class Sum(val left: Expr, val right: Expr) : Expr {
-    var name: String = ""
-        set(_name) {
-            name = _name
+    inner class Name(val firstName: String, val lastName: String) {
+        fun print() {
+            println("$firstName $lastName's age is $age")
         }
-        get() = field
-}
-
-fun eval(e: Expr): Int =
-    when (e) {
-        is Num -> e.value
-        is Sum -> eval(e.left) + eval(e.right)
-        else ->
-            throw IllegalArgumentException("Unknown expression")
     }
-
-fun main() {
-    strLen(null)
-    val a = 1
-    println(a as Double)
-    val b = arrayOfNulls<Int>(1)
-    val nullsArrayList = ArrayList<Int?>()
-}
-
-fun strLen(s: String?) = s?.let {
-    it.trim()
-    it.length
 }
