@@ -10,9 +10,9 @@ fun search(nums: IntArray, target: Int): Int {
     var end = nums.size
     var mid = (end + start) / 2
 
-
+    return 0
 }
 
 fun binarySearch(start: Int, end: Int, target: Int): Int {
-
+    return 0
 }
