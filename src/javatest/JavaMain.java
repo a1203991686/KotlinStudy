@@ -1,22 +1,30 @@
 package javatest;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.Vector;
 
 /**
  * 面试题46. 把数字翻译成字符串
+ *
  * @author littlecorgi
  * @date 2020-04-03 23:41
  */
 class JavaMain {
     public static void main(String[] args) {
-        for (int i = 0; i < 10; ++i) {
-            new Timer("timer - " + i).schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    System.out.println(Thread.currentThread().getName() + " run ");
-                }
-            }, 2000, 3000);
+        // for (int i = 0; i < 10; ++i) {
+        //     new Timer("timer - " + i).schedule(new TimerTask() {
+        //         @Override
+        //         public void run() {
+        //             System.out.println(Thread.currentThread().getName() + " run ");
+        //         }
+        //     }, 2000, 3000);
+        // }
+        Vector<Integer> vector = new Vector<>();
+        vector.add(1);
+        vector.add(2);
+        vector.add(3);
+        if (vector.size() > 0) {
+            vector.clear();
+            System.out.println(vector.get(0));
         }
     }
 
