@@ -1,7 +1,5 @@
 package javatest;
 
-import java.util.Vector;
-
 /**
  * 面试题46. 把数字翻译成字符串
  *
@@ -9,58 +7,64 @@ import java.util.Vector;
  * @date 2020-04-03 23:41
  */
 class JavaMain {
+
+    private OnClickListener onClickListener;
+    private int outterA = 1;
+
+    public void setOnClickListener(OnClickListener a) {
+        this.onClickListener = a;
+    }
+
     public static void main(String[] args) {
-        // for (int i = 0; i < 10; ++i) {
-        //     new Timer("timer - " + i).schedule(new TimerTask() {
-        //         @Override
-        //         public void run() {
-        //             System.out.println(Thread.currentThread().getName() + " run ");
-        //         }
-        //     }, 2000, 3000);
-        // }
-        Vector<Integer> vector = new Vector<>();
-        vector.add(1);
-        vector.add(2);
-        vector.add(3);
-        if (vector.size() > 0) {
-            vector.clear();
-            System.out.println(vector.get(0));
-        }
-    }
-
-    public int translateNum(int num) {
-        String str = num + "";
-
-        if (str.length() == 0) {
-            return 0;
-        } else if (str.length() == 1) {
-            return 1;
-        }
-
-        int[] dps = new int[str.length()];
-        dps[str.length() - 1] = 1;
-        char a = str.charAt(str.length() - 2);
-        char b = str.charAt(str.length() - 1);
-        if (a > '2' || a == '0') {
-            dps[str.length() - 2] = 1;
-        } else if (a == '2' && b >= '6') {
-            dps[str.length() - 2] = 1;
-        } else if (a == '2' && b < '6') {
-            dps[str.length() - 2] = 2;
-        } else if (a == '1') {
-            dps[str.length() - 2] = 2;
-        }
-        for (int i = str.length() - 3; i >= 0; i--) {
-            if (str.charAt(i) > '2' || str.charAt(i) == '0') {
-                dps[i] = dps[i + 1];
-            } else if (str.charAt(i) == '2' && str.charAt(i + 1) >= '6') {
-                dps[i] = dps[i + 1];
-            } else if (str.charAt(i) == '2' && str.charAt(i + 1) < '6') {
-                dps[i] = dps[i + 1] + dps[i + 2];
-            } else if (str.charAt(i) == '1') {
-                dps[i] = dps[i + 1] + dps[i + 2];
+        Thread a = new Thread(() -> {
+            for (int i = 0; i < 4; i++) {
+                System.out.println("1" + i);
             }
+        });
+        Thread b = new Thread(() -> {
+            for (int i = 0; i < 4; i++) {
+                System.out.println("2" + i);
+            }
+        });
+        Thread c = new Thread(() -> {
+            for (int i = 0; i < 4; i++) {
+                System.out.println("3" + i);
+            }
+        });
+        Thread d = new Thread(() -> {
+            for (int i = 0; i < 4; i++) {
+                System.out.println("4" + i);
+            }
+        });
+        try {
+            a.start();
+            b.start();
+            c.start();
+            d.start();
+            a.join();
+            b.join();
+            c.join();
+            d.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        return dps[0];
+
     }
+
+    void onClick(final int a) {
+        int onClickA = 1;
+        JavaMain javaMain = new JavaMain();
+        javaMain.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick() {
+                System.out.println(a);
+                System.out.println(outterA);
+                System.out.println(onClickA);
+            }
+        });
+    }
+}
+
+interface OnClickListener {
+    void onClick();
 }
