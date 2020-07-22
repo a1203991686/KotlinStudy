@@ -1,4 +1,4 @@
-package leetcode
+package leetcode.easy
 
 /**
  *
@@ -16,12 +16,4 @@ fun minArray(numbers: IntArray): Int {
         }
     }
     return result
-}
-
-fun main() {
-    println(
-        minArray(
-            intArrayOf(2,2,2,0,1)
-        )
-    )
 }
