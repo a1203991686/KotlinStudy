@@ -1,4 +1,4 @@
-package leetcode
+package leetcode.easy
 
 /**
  * 378. 有序矩阵中第K小的元素
