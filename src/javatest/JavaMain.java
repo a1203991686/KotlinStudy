@@ -1,72 +1,59 @@
 package javatest;
 
-import java.util.Vector;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.math.BigInteger;
 
 class JavaMain {
+    static {
+        System.out.println("JavaMain Static 1");
+    }
+
+    {
+        System.out.println("JavaMain 1");
+    }
+
+    public JavaMain() {
+        System.out.println("JavaMain Constructor");
+    }
+
+    static {
+        System.out.println("JavaMain Static 2");
+    }
+
+    {
+        System.out.println("JavaMain 1");
+    }
+
+    public static BigInteger test(int a) {
+        if (a == 0) {
+            return BigInteger.ONE;
+        }
+        BigInteger temp = BigInteger.valueOf(a).multiply(test(a - 1));
+        return temp;
+    }
+
     public static void main(String[] args) {
-        Object object1 = new Object();
-        Object object2 = new Object();
-        SynchronizedTest a = new SynchronizedTest("a", object1);
-        SynchronizedTest b = new SynchronizedTest("b", object2);
-        Thread aThread = new Thread(() -> {
-            // SynchronizedTest.synchronizedStaticTest1();
-            a.synchronizedThisTest();
-        });
-        Thread bThread = new Thread(() -> {
-            // SynchronizedTest.synchronizedStaticTest2();
-            a.synchronizedThisTest();
-        });
-        aThread.start();
-        bThread.start();
-        SynchronizedTest.InnerA innerA = a.new InnerA();
-        System.out.println("*********");
-        innerA.testA();
+        System.out.println(test(100000));
     }
 }
 
-class SynchronizedTest {
-
-    class InnerA {
-        public void testA() {
-            synchronizedThisTest();
-            System.out.println(name);
-        }
+class ExtendsJavaMain extends JavaMain {
+    static {
+        System.out.println("ExtendsJavaMain Static 1");
     }
 
-    private String name;
-    private Object object;
-
-    public SynchronizedTest(String s, Object obj) {
-        name = s;
-        object = obj;
+    {
+        System.out.println("ExtendsJavaMain 1");
     }
 
-    public void synchronizedThisTest() {
-        synchronized (this) {
-            for (int i = 0; i < 100; i++) {
-                System.out.print(name + i);
-            }
-            System.out.println();
-            System.out.println("-----");
-        }
+    public ExtendsJavaMain() {
+        System.out.println("ExtendsJavaMain Constructor");
     }
 
-    public synchronized static void synchronizedStaticTest1() {
-        for (int i = 0; i < 100; i++) {
-            System.out.print("static 1 " + i);
-        }
-        System.out.println();
-        System.out.println("-----");
+    static {
+        System.out.println("ExtendsJavaMain Static 2");
     }
 
-    public synchronized static void synchronizedStaticTest2() {
-        for (int i = 0; i < 100; i++) {
-            System.out.print("static 2 " + i);
-        }
-        System.out.println();
-        System.out.println("-----");
+    {
+        System.out.println("ExtendsJavaMain 1");
     }
-
 }
