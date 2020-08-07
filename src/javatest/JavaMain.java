@@ -1,5 +1,8 @@
 package javatest;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.math.BigInteger;
 
 class JavaMain {
@@ -31,7 +34,17 @@ class JavaMain {
         return temp;
     }
 
+    public static void nullableTest(@Nullable String a) {
+        System.out.println(a);
+    }
+
+    public static void nonTest(@NotNull String a) {
+        System.out.println(a);
+    }
+
     public static void main(String[] args) {
+        nullableTest(null);
+        nonTest(null);
         System.out.println(test(100000));
     }
 }
