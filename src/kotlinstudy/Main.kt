@@ -11,7 +11,9 @@ tailrec fun test(a: Int, b: BigInteger): BigInteger {
 }
 
 fun main() {
-    println(test(100000, BigInteger.valueOf(1.toLong())))
+    // println(test(100000, BigInteger.valueOf(1.toLong())))
+    val a = listOf("1", "2", "3")
+    println(a.joinToString(separator = ""))
 }
 
 object Main {
@@ -24,7 +26,7 @@ object Main {
 
 class MainTest {
     companion object {
-        var a : String = "1"
+        var a: String = "1"
         fun print() {
 
         }
