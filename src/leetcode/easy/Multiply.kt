@@ -9,66 +9,58 @@ import kotlin.math.max
  * @author littlecorgi
  * @date 2020-04-03 23:41
  *
- * 可优化，此题放入leetcode会编译超时
- * 优化方案也很简单，直接模拟列式乘法，对于每一位的乘法作加法处理
+ * 代码有问题，正确代码直接看LeetCode原题
  */
 fun multiply(num1: String, num2: String): String {
     if (num1 == "0" || num2 == "0") {
         return "0"
     }
-    var result = "0"
-    repeat(num2.toInt()) {
-        result = add(result, num1)
+    // 保存计算结果
+    var res = "0"
+
+    // num2 逐位与 num1 相乘
+    for (i in num2.length - 1 downTo 0) {
+        var carry = 0
+        // 保存 num2 第i位数字与 num1 相乘的结果
+        val temp = StringBuilder()
+        // 补 0
+        for (j in 0 until num2.length - 1 - i) {
+            temp.append(0)
+        }
+        val n2 = num2[i] - '0'
+
+        // num2 的第 i 位数字 n2 与 num1 相乘
+        var j = num1.length - 1
+        while (j >= 0 || carry != 0) {
+            val n1 = if (j < 0) 0 else num1[j] - '0'
+            val product = (n1 * n2 + carry) % 10
+            temp.append(product)
+            carry = (n1 * n2 + carry) / 10
+            j--
+        }
+        // 将当前结果与新计算的结果求和作为新的结果
+        res = add(res, temp.reverse().toString())
     }
-    return result
+    return res
 }
 
 fun add(num1: String, num2: String): String {
-    val sb = StringBuilder()
-    val maxLength = max(num1.length, num2.length)
-    var addFlag = false
+    val builder = StringBuilder()
+    var carry = 0
     var i = num1.length - 1
     var j = num2.length - 1
-    var k = maxLength - 1
-    while (i >= 0 && j >= 0) {
-        val temp = num1[i] + num2[j] + (if (addFlag) 1 else 0)
-        if (temp <= '9') {
-            addFlag = false
-            sb.insert(0, temp)
-        } else {
-            addFlag = true
-            sb.insert(0, temp - 10)
-        }
+    while (i >= 0 || j >= 0 || carry != 0) {
+        val x = if (i <= 0) 0 else num1[i] - '0'
+        val y = if (i <= 0) 0 else num2[j] - '0'
+        val sum = (x + y + carry) % 10
+        builder.append(sum)
+        carry = (x + y + carry) / 10
         i--
         j--
-        k--
     }
-    val m = if (i == k) {
-        i
-    } else {
-        j
-    }
-    val tempStr = if (i == k) {
-        num1
-    } else {
-        num2
-    }
-    for (l in m downTo 0) {
-        val temp = tempStr[l] + (if (addFlag) 1 else 0)
-        if (temp <= '9') {
-            addFlag = false
-            sb.insert(0, temp)
-        } else {
-            addFlag = true
-            sb.insert(0, temp - 10)
-        }
-    }
-    if (addFlag) {
-        sb.insert(0, '1')
-    }
-    return sb.toString()
+    return builder.reverse().toString()
 }
 
-operator fun Char.plus(b: Char): Char {
-    return (this.toInt() + b.toInt() - 48).toChar()
+fun main() {
+    println(multiply("2", "3"))
 }
