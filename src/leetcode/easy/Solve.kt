@@ -8,8 +8,8 @@ import java.util.*
  * @author littlecorgi
  * @date 2020-04-03 23:41
  */
-val dx = intArrayOf(1, -1, 0, 0)
-val dy = intArrayOf(0, 0, 1, -1)
+private val dx = intArrayOf(1, -1, 0, 0)
+private val dy = intArrayOf(0, 0, 1, -1)
 fun solve(board: Array<CharArray>) {
     if (board.isEmpty()) {
         return

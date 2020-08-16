@@ -12,8 +12,26 @@ tailrec fun test(a: Int, b: BigInteger): BigInteger {
 
 fun main() {
     // println(test(100000, BigInteger.valueOf(1.toLong())))
-    val a = listOf("1", "2", "3")
-    println(a.joinToString(separator = ""))
+    val threadA = Thread {
+        for (i in 0..4) {
+            println("A $i")
+        }
+    }
+    val threadB = Thread {
+        for (i in 0..4) {
+            println("B $i")
+        }
+    }
+    val threadC = Thread {
+        for (i in 0..4) {
+            println("C $i")
+        }
+    }
+    threadA.start()
+    threadA.join()
+    threadB.start()
+    threadB.join()
+    threadC.start()
 }
 
 object Main {
