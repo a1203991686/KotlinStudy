@@ -6,7 +6,8 @@ import kotlin.reflect.jvm.internal.impl.utils.DFS
  * @author littlecorgi
  * @date 2020-04-03 23:41
  */
-class TreeNode(var `val`: Int) {
+class TreeNode(var `val`: Int?) {
+    constructor()
     var left: TreeNode? = null
     var right: TreeNode? = null
 }
