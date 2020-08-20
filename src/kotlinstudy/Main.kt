@@ -27,11 +27,11 @@ fun main() {
             println("C $i")
         }
     }
-    threadA.start()
-    threadA.join()
-    threadB.start()
-    threadB.join()
-    threadC.start()
+    val a: Double = 3.3
+    val b: Double = 1.0
+    println(a.toInt())
+    println(a * b)
+    val c = a.to(b)
 }
 
 object Main {

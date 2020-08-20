@@ -6,8 +6,12 @@ import kotlin.reflect.jvm.internal.impl.utils.DFS
  * @author littlecorgi
  * @date 2020-04-03 23:41
  */
-class TreeNode(var `val`: Int?) {
-    constructor()
+class TreeNode() {
+    constructor(a: Int) : this() {
+        this.`val` = a
+    }
+
+    var `val`: Int = 0
     var left: TreeNode? = null
     var right: TreeNode? = null
 }

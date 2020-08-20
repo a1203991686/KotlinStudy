@@ -5,6 +5,7 @@ import org.jetbrains.annotations.Nullable;
 import sun.misc.Launcher;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
