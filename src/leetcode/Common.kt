@@ -23,3 +23,24 @@ class ListNode(var `val`: Int) {
 class Node(var `val`: Int) {
     var neighbors: ArrayList<Node?> = ArrayList()
 }
+
+/**
+ * 返回如下一棵二叉树
+ *     3
+ *    / \
+ *   9  20
+ *     /  \
+ *    15   7
+ */
+fun getBinaryTree(): TreeNode {
+    val root = TreeNode(3)
+    val a = TreeNode(9)
+    val b = TreeNode(20)
+    val c = TreeNode(15)
+    val d = TreeNode(7)
+    root.left = a
+    root.right = b
+    b.left = c
+    b.right = d
+    return root
+}
