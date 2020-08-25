@@ -24,7 +24,3 @@ fun new21Game(N: Int, K: Int, W: Int): Double {
     }
     return dp[0]
 }
-
-fun main() {
-    println(new21Game(21, 17, 10))
-}

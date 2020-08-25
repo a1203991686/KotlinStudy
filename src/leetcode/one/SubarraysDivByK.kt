@@ -20,8 +20,3 @@ fun subarraysDivByK(A: IntArray, K: Int): Int {
     }
     return ans
 }
-
-fun main() {
-    val a = intArrayOf(4, 5, 0, -2, -3, 1)
-    println(subarraysDivByK(a, 5))
-}

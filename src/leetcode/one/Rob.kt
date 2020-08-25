@@ -22,9 +22,3 @@ fun rob(nums: IntArray): Int {
         0
     }
 }
-
-
-fun main() {
-    val nums = intArrayOf()
-    println(rob(nums))
-}

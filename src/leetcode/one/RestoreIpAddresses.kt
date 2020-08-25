@@ -10,10 +10,10 @@ import kotlin.collections.ArrayList
  * @date 2020-04-03 23:41
  */
 
-var n = 0
-var str = ""
-var segments = LinkedList<String>()
-var output = ArrayList<String>()
+private var n = 0
+private var str = ""
+private var segments = LinkedList<String>()
+private var output = ArrayList<String>()
 
 fun restoreIpAddresses(s: String): List<String> {
     n = s.length
