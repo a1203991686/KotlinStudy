@@ -74,3 +74,32 @@ fun getLinkedList(flag: Boolean): ListNode? {
         a
     }
 }
+fun getLinkedList(flag: Boolean): ListNode? {
+    return if (flag) {
+        val a = ListNode(4)
+        val b = ListNode(1)
+        val c = ListNode(8)
+        val d = ListNode(4)
+        val e = ListNode(5)
+        a.next = b
+        b.next = c
+        c.next = d
+        d.next = e
+        e.next = null
+        a
+    } else {
+        val a = ListNode(5)
+        val b = ListNode(0)
+        val c = ListNode(1)
+        val d = ListNode(8)
+        val e = ListNode(4)
+        val f = ListNode(5)
+        a.next = b
+        b.next = c
+        c.next = d
+        d.next = e
+        e.next = f
+        f.next = null
+        a
+    }
+}
