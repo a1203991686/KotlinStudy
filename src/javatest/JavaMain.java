@@ -42,19 +42,19 @@ class JavaMain {
         System.out.println(a);
     }
 
-    public static void main(String[] args) {
-        // nullableTest(null);
-        // nonTest(null);
-        // System.out.println(test(100000));
-
-        String a = "abc";
-        String b = "abc";
-        String c = new String("abc");
-        System.out.println(a==b);
-        System.out.println(a==c);
-        System.out.println(a.equals(b));
-        System.out.println(a.equals(c));
-    }
+    // public static void main(String[] args) {
+    //     // nullableTest(null);
+    //     // nonTest(null);
+    //     // System.out.println(test(100000));
+    //
+    //     String a = "abc";
+    //     String b = "abc";
+    //     String c = new String("abc");
+    //     System.out.println(a==b);
+    //     System.out.println(a==c);
+    //     System.out.println(a.equals(b));
+    //     System.out.println(a.equals(c));
+    // }
 }
 
 class ExtendsJavaMain extends JavaMain {
@@ -76,5 +76,30 @@ class ExtendsJavaMain extends JavaMain {
 
     {
         System.out.println("ExtendsJavaMain 1");
+    }
+}
+
+class A {
+    public volatile int i = 0;
+    public StringBuilder sb = new StringBuilder("123");
+
+    public void foo() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                i = 1;
+                sb.append("1");
+            }
+        }).start();
+
+        System.out.println(i);
+        System.out.println(sb.toString());
+    }
+
+    public static void main(String[] args) {
+        A a = new A();
+        a.foo();
+        System.out.println(a.i);
+        System.out.println(a.sb);
     }
 }
