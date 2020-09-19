@@ -1,105 +1,26 @@
 package javatest;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.math.BigInteger;
-
 class JavaMain {
-    static {
-        System.out.println("JavaMain Static 1");
-    }
-
-    {
-        System.out.println("JavaMain 1");
-    }
-
-    public JavaMain() {
-        System.out.println("JavaMain Constructor");
-    }
-
-    static {
-        System.out.println("JavaMain Static 2");
-    }
-
-    {
-        System.out.println("JavaMain 1");
-    }
-
-    public static BigInteger test(int a) {
-        if (a == 0) {
-            return BigInteger.ONE;
-        }
-        BigInteger temp = BigInteger.valueOf(a).multiply(test(a - 1));
-        return temp;
-    }
-
-    public static void nullableTest(@Nullable String a) {
-        System.out.println(a);
-    }
-
-    public static void nonTest(@NotNull String a) {
-        System.out.println(a);
-    }
-
-    // public static void main(String[] args) {
-    //     // nullableTest(null);
-    //     // nonTest(null);
-    //     // System.out.println(test(100000));
-    //
-    //     String a = "abc";
-    //     String b = "abc";
-    //     String c = new String("abc");
-    //     System.out.println(a==b);
-    //     System.out.println(a==c);
-    //     System.out.println(a.equals(b));
-    //     System.out.println(a.equals(c));
-    // }
-}
-
-class ExtendsJavaMain extends JavaMain {
-    static {
-        System.out.println("ExtendsJavaMain Static 1");
-    }
-
-    {
-        System.out.println("ExtendsJavaMain 1");
-    }
-
-    public ExtendsJavaMain() {
-        System.out.println("ExtendsJavaMain Constructor");
-    }
-
-    static {
-        System.out.println("ExtendsJavaMain Static 2");
-    }
-
-    {
-        System.out.println("ExtendsJavaMain 1");
-    }
-}
-
-class A {
-    public volatile int i = 0;
-    public StringBuilder sb = new StringBuilder("123");
-
-    public void foo() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                i = 1;
-                sb.append("1");
-            }
-        }).start();
-
-        System.out.println(i);
-        System.out.println(sb.toString());
-    }
+    static String str = "1";
 
     public static void main(String[] args) {
-        A a = new A();
-        a.foo();
-        System.out.println(a.i);
-        System.out.println(a.sb);
+        String a = "a";
+        String b = "a";
+        System.out.println(b);
+        // a = "aaa";
+        // System.out.println(b);
+        String c = new String("a");
+        System.out.println(c);
+        System.out.println(a == c);
+        System.out.println(a.equals(c));
+        System.out.println(a == b);
+        System.out.println(a.equals(b));
+        System.out.println(str);
+        change(str);
+        System.out.println(str);
+    }
+
+    static void change(String a) {
+        System.out.println(str == a);
     }
 }
