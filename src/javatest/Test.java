@@ -20,6 +20,9 @@ public class Test {
             configs = ClassLoader.getSystemResources(fullName);
             InputStream in = configs.nextElement().openStream();
             BufferedReader r = new BufferedReader(new InputStreamReader(in, "utf-8"));
+
+            PersonBean personBean = new PersonBean();
+            personBean.str = "1234";
             do {
                 System.out.println(r.readLine());
             } while (r.read() != -1);

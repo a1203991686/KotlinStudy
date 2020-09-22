@@ -1,70 +1,68 @@
 package kotlinstudy
 
 import java.math.BigInteger
-import kotlin.concurrent.thread
 
 tailrec fun test(a: Int, b: BigInteger): BigInteger {
     if (a == 0) {
         return b
     }
-    Main.print()
     return test(a - 1, BigInteger.valueOf(a.toLong()).multiply(b))
 }
 
-// fun main() {
-//     // println(test(100000, BigInteger.valueOf(1.toLong())))
-//     val threadA = Thread {
-//         for (i in 0..4) {
-//             println("A $i")
-//         }
-//     }
-//     val threadB = Thread {
-//         for (i in 0..4) {
-//             println("B $i")
-//         }
-//     }
-//     val threadC = Thread {
-//         for (i in 0..4) {
-//             println("C $i")
-//         }
-//     }
-//     val a: Double = 3.3
-//     val b: Double = 1.0
-//     println(a.toInt())
-//     println(a * b)
-//     val c = a.to(b)
-// }
-
-object Main {
-    var a: String = "1"
-
-    fun print() {
-
-    }
-}
-
-class MainTest {
-    companion object {
-        var a: String = "1"
-        fun print() {
-
-        }
-    }
-}
-
-inline fun hello(a: Int,  b: () -> Int) {
-    println("hello")
-    println(b())
-}
-
-fun main1(): Int {
-    hello(1) {
-        println("abc")
-        return 1
-    }
-    return 2
-}
-
 fun main() {
-    println("main: ${main1()}")
+    // val thread = Thread {
+    //     for (i in 0..10) {
+    //         println("子线程 $i")
+    //     }
+    // }
+    // thread.start()
+    //
+    // for (i in 0..10) {
+    //     println("主线程 $i")
+    //     if (i > 2) {
+    //         thread.join()
+    //     }
+    // }
+    // repeat(250) {
+    //     val mainThread = MainThread()
+    //     mainThread.start()
+    //     Thread {
+    //         MainRunnable()
+    //     }.start()
+    // }
+    val arrayList = ArrayList<Int>()
+    repeat(100) {
+        arrayList.add(0)
+    }
+    for (i in 0..99) {
+        arrayList.add(i + 1)
+    }
+    Thread() {
+        try {
+            val it = arrayList.iterator()
+            while (it.hasNext()) {
+                print(it.next())
+            }
+        } catch (e: ConcurrentModificationException) {
+            e.printStackTrace()
+        }
+    }.start()
+    Thread() {
+        arrayList.add(3)
+    }.start()
+}
+
+internal class MainThread : Thread() {
+    override fun run() {
+        super.run()
+        println("王埃及是傻逼")
+        println(currentThread().name)
+    }
+}
+
+internal class MainRunnable : Runnable {
+    override fun run() {
+        println("王埃及是智障")
+        println(Thread.currentThread().name)
+    }
 }
