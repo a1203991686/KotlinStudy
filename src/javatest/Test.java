@@ -1,11 +1,7 @@
 package javatest;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @author littlecorgi
@@ -14,22 +10,19 @@ import java.util.Enumeration;
 public class Test {
 
     public static void main(String[] args) {
-        String fullName = "src/javatest/Test.java";
-        Enumeration<URL> configs;
-        try {
-            configs = ClassLoader.getSystemResources(fullName);
-            InputStream in = configs.nextElement().openStream();
-            BufferedReader r = new BufferedReader(new InputStreamReader(in, "utf-8"));
-
-            PersonBean personBean = new PersonBean();
-            personBean.str = "1234";
-            do {
-                System.out.println(r.readLine());
-            } while (r.read() != -1);
-        } catch (IOException e) {
-            e.printStackTrace();
+        CopyOnWriteArrayList<Integer> vector = new CopyOnWriteArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            vector.add(i);
         }
-
+        new Thread(() -> {
+            Iterator<Integer> it = vector.iterator();
+            while (it.hasNext()) {
+                System.out.print(it.next());
+            }
+        }).start();
+        new Thread(() -> {
+            vector.clear();
+        }).start();
     }
 
 }

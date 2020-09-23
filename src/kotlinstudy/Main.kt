@@ -23,13 +23,13 @@ fun main() {
     //         thread.join()
     //     }
     // }
-    // repeat(250) {
-    //     val mainThread = MainThread()
-    //     mainThread.start()
-    //     Thread {
-    //         MainRunnable()
-    //     }.start()
-    // }
+    repeat(250) {
+        val mainThread = MainThread()
+        mainThread.start()
+        Thread {
+            MainRunnable()
+        }.start()
+    }
     val arrayList = ArrayList<Int>()
     repeat(100) {
         arrayList.add(0)
@@ -37,7 +37,7 @@ fun main() {
     for (i in 0..99) {
         arrayList.add(i + 1)
     }
-    Thread() {
+    Thread {
         try {
             val it = arrayList.iterator()
             while (it.hasNext()) {
@@ -47,7 +47,7 @@ fun main() {
             e.printStackTrace()
         }
     }.start()
-    Thread() {
+    Thread {
         arrayList.add(3)
     }.start()
 }
