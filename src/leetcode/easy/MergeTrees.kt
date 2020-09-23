@@ -1,4 +1,6 @@
-package leetcode
+package leetcode.easy
+
+import leetcode.TreeNode
 
 /**
  * 617. 合并二叉树
@@ -17,8 +19,4 @@ fun mergeTrees(t1: TreeNode?, t2: TreeNode?): TreeNode? {
     newNode.left = mergeTrees(t1.left, t2.left)
     newNode.right = mergeTrees(t1.right, t2.right)
     return newNode
-}
-
-fun main() {
-
 }
