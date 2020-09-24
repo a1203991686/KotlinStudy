@@ -43,7 +43,7 @@ val continuationStart = suspend {
     }
 })
 
-suspend fun main() {
+fun main() {
     continuationCreate.resume(Unit)
     continuationStart
 }
