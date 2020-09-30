@@ -1,5 +1,6 @@
 package javatest;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -10,35 +11,20 @@ import java.util.LinkedList;
 public class Test {
 
     public static void main(String[] args) {
-        ArrayList<Integer> arrayList = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            arrayList.add(i);
-        }
+        System.out.println(testCatch());
+    }
 
-        LinkedList<Integer> linkedList = new LinkedList<>();
-        for (int i = 0; i < 100; i++) {
-            linkedList.add(i);
+    private static String testCatch() {
+        try {
+            System.out.println("start");
+            throw new FileNotFoundException();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return "catch";
+        } finally {
+            System.out.println("finally1");
+            // return "finally";
         }
-
-        long start1 = System.currentTimeMillis();
-        arrayList.add(50, 1);
-        for (int i = 0; i < 10000; i++) {
-            int temp = arrayList.size();
-            arrayList.add(temp / 2, 100 + i);
-        }
-        long end1 = System.currentTimeMillis();
-        System.out.println("ArrayList花费: " + (end1 - start1) + " " + end1 + " " + start1);
-
-        long start2 = System.currentTimeMillis();
-        for (int i = 0; i < 10000; i++) {
-            int temp = linkedList.size();
-            linkedList.add(temp / 2, 100 + i);
-        }
-        long end2 = System.currentTimeMillis();
-        System.out.println("LinkedList花费: " + (end2 - start2) + " " + end2 + " " + start2);
-
-        addFromMidTest(10000, true);
-        addFromMidTest(10000, false);
     }
 
     public static void addFromMidTest(int num, boolean flag) {
