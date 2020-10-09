@@ -9,9 +9,12 @@ public class JNIExample {
         System.loadLibrary("test");
     }
 
-    public native void getStringFromC();
+    /**
+     * 声明是native方法
+     */
+    public static native String sayHello(String name);
 
     public static void main(String[] args) {
-
+        System.out.println(sayHello("abc"));
     }
 }

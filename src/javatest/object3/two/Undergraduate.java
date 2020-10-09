@@ -1,4 +1,4 @@
-package com.littlecorgi.suanfa.object3.two;
+package javatest.object3.two;
 
 public class Undergraduate extends com.littlecorgi.suanfa.object3.two.Student {
     @Override
