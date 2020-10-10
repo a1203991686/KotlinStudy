@@ -3,7 +3,8 @@ package leetcode.easy
 import leetcode.ListNode
 
 /**
- *
+ * 面试题 02.01. 移除重复节点
+ * https://leetcode-cn.com/problems/remove-duplicate-node-lcci/
  * @author littlecorgi
  * @date 2020-04-03 23:41
  */

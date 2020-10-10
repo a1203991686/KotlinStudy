@@ -2,7 +2,6 @@ package leetcode.easy
 
 import java.util.*
 
-
 /**
  * 56. 合并区间
  * https://leetcode-cn.com/problems/merge-intervals/

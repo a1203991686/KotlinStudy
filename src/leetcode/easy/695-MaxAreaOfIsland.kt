@@ -3,7 +3,8 @@ package leetcode.easy
 import java.util.*
 
 /**
- *
+ * 695. 岛屿的最大面积
+ * https://leetcode-cn.com/problems/max-area-of-island/
  * @author littlecorgi
  * @date 2020-04-03 23:41
  */

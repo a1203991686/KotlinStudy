@@ -1,7 +1,8 @@
 package leetcode.easy
 
 /**
- *
+ * 面试题 16.11. 跳水板
+ * https://leetcode-cn.com/problems/diving-board-lcci/
  * @author littlecorgi
  * @date 2020-04-03 23:41
  */

@@ -1,6 +1,5 @@
 package leetcode.easy
 
-import java.lang.StringBuilder
 import java.util.regex.Pattern
 
 /**

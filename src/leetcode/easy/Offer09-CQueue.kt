@@ -8,7 +8,7 @@ import java.util.*
  * @author littlecorgi
  * @date 2020-04-03 23:41
  */
-class CQueue() {
+class `Offer09-CQueue`() {
     private val inStack = Stack<Int>()
     private val outStack = Stack<Int>()
 

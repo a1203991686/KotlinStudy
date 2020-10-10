@@ -1,7 +1,6 @@
 package leetcode.easy
 
 import leetcode.ListNode
-import leetcode.getLinkedList
 
 /**
  * 160. 相交链表

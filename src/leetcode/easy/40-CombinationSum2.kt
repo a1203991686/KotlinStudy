@@ -1,7 +1,5 @@
 package leetcode.easy
 
-import kotlin.collections.ArrayList
-
 /**
  * 40. 组合总和 II
  * https://leetcode-cn.com/problems/combination-sum-ii/
