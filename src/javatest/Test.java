@@ -11,7 +11,7 @@ import java.util.LinkedList;
 public class Test {
 
     public static void main(String[] args) {
-        System.out.println(testCatch());
+        // System.out.println(testCatch());
     }
 
     private static String testCatch() {
