@@ -35,17 +35,6 @@ fun mergeTwoLists(l1: ListNode?, l2: ListNode?): ListNode? {
             j = j.next
         }
     }
-    while (i != null) {
-        val temp = ListNode(i.`val`)
-        k.next = temp
-        k = temp
-        i = i.next
-    }
-    while (j != null) {
-        val temp = ListNode(j.`val`)
-        k.next = temp
-        k = temp
-        j = j.next
-    }
+    k.next = i ?: j
     return result
 }
