@@ -12,6 +12,11 @@ class TreeNode() {
     var `val`: Int = 0
     var left: TreeNode? = null
     var right: TreeNode? = null
+    /**
+     * next是为了适应 LC-116 题这种带next指针的情景
+     * 116. 填充每个节点的下一个右侧节点指针
+     * https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/
+     */
     var next: TreeNode? = null
 }
 

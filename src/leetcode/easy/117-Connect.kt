@@ -9,7 +9,7 @@ import java.util.*
  * @author littlecorgi
  * @date 2020/9/28
  */
-fun connect(root: TreeNode?): TreeNode? {
+fun connect2(root: TreeNode?): TreeNode? {
     if (root == null) {
         return root
     }
